@@ -15,12 +15,13 @@ public class AprilTagCode {
     AllAprilTags targetIDs = new AllAprilTags();
     private PhotonCamera camera = new PhotonCamera("gloworm");
     private Transform3d cameraToRobotCenter = new Transform3d(
-            new Translation3d(Units.inchesToMeters(13.75), 0, Units.inchesToMeters(35.5)),
+            new Translation3d(Units.inchesToMeters(2), Units.inchesToMeters(-7), Units.inchesToMeters(31)),
             new Rotation3d(0, Units.degreesToRadians(-29.25), Units.degreesToRadians(3.57))).inverse();
     private Pose3d robotPos;
     // private Transform3d targetFix = new Transform3d(new Translation3d(0, 0, 0),
     // new Rotation3d(90, 0, 90))
 
+    // 32 16
     // targetToCameraFLIP: [-0.02, -0.49, 1.49] [60.43, 2.00, -88.52]
     // globalCameraPose: [-0.49, 1.49, -0.02] [-2.30, -29.55, -177.38]
 
@@ -41,6 +42,9 @@ public class AprilTagCode {
             var cameraGlobalPose = this.fixedTransformBy(tagGlobalPose, targetToCamera);
             var robotGlobalPose = this.fixedTransformBy(cameraGlobalPose, cameraToRobotCenter);
 
+            SmartDashboard.putNumber("robotGlobalPoseXTranslation", robotGlobalPose.getTranslation().getX());
+            SmartDashboard.putNumber("robotGlobalPoseYTranslation", robotGlobalPose.getTranslation().getY());
+            SmartDashboard.putNumber("robotGlobalPosZXTranslation", robotGlobalPose.getTranslation().getZ());
             System.out.printf("robotGlobalPose: [%.02f, %.02f, %.02f] [%.02f, %.02f, %.02f]\n",
                     robotGlobalPose.getTranslation().getX(),
                     robotGlobalPose.getTranslation().getY(),
