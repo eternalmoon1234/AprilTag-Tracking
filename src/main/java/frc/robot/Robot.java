@@ -1,6 +1,5 @@
 package frc.robot;
 
-
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.AprilTags.AprilTagCode;
 
@@ -8,12 +7,13 @@ public class Robot extends TimedRobot {
   private AprilTagCode aprilTagTest = new AprilTagCode();
 
   @Override
-  public void robotInit() {}
+  public void robotInit() {
+  }
 
   @Override
   public void robotPeriodic() {
     aprilTagTest.calculate();
-    //System.out.println("Field to Robot: " + testAprilTag.getPos());
+    // System.out.println("Field to Robot: " + testAprilTag.getPos());
   }
 
   @Override

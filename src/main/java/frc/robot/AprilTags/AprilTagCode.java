@@ -9,6 +9,7 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AprilTagCode {
     AllAprilTags targetIDs = new AllAprilTags();
@@ -35,7 +36,7 @@ public class AprilTagCode {
             PhotonTrackedTarget target = result.getBestTarget();
             Transform3d targetToCamera = target.getCameraToTarget().inverse();
 
-            var tagGlobalPose = new Pose3d(new Translation3d(Units.inchesToMeters(31), 0, Units.inchesToMeters(55)),
+            var tagGlobalPose = new Pose3d(new Translation3d(Units.inchesToMeters(0), 0, Units.inchesToMeters(0)),
                     new Rotation3d(Units.degreesToRadians(-90), Units.degreesToRadians(180), 0));
             var cameraGlobalPose = this.fixedTransformBy(tagGlobalPose, targetToCamera);
             var robotGlobalPose = this.fixedTransformBy(cameraGlobalPose, cameraToRobotCenter);
